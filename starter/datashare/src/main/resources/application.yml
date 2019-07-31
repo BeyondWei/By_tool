@@ -1,0 +1,25 @@
+server:
+  port: 8888
+
+spring:
+  redis:
+    host: 192.168.40.14
+    port: 6379
+    database: 10
+  application:
+    name: szcloud-datashare-service
+  profiles:
+    active: dev
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.5.60:8848
+    sentinel:
+      transport:
+        port: 8719
+        dashboard: 192.168.5.60:8080
+feign:
+  sentinel:
+    enabled: true
+
+
