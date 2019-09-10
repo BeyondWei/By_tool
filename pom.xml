@@ -40,9 +40,12 @@
         <spring-boot.version>2.1.3.RELEASE</spring-boot.version>
         <spring-cloud-alibaba.version>0.9.0.RELEASE</spring-cloud-alibaba.version>
         <spring-cloud.version>Greenwich.RELEASE</spring-cloud.version>
+        <spring-cloud-context.vsersion>2.0.2.RELEASE</spring-cloud-context.vsersion>
         <mybatis.version>1.3.2</mybatis.version>
         <tk.mybatis.version>2.0.0</tk.mybatis.version>
         <pagehelper.version>1.2.3</pagehelper.version>
+        <hutool-all.version>4.6.0</hutool-all.version>
+        <fastjson.version>1.2.58</fastjson.version>
     </properties>
 
 
@@ -74,6 +77,12 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-context</artifactId>
+                <version>${spring-cloud-context.vsersion}</version>
+                <scope>compile</scope>
+            </dependency>
             <!--Spring cloud alibaba-->
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
@@ -81,6 +90,13 @@
                 <version>${spring-cloud-alibaba.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-context</artifactId>
+                <version>2.0.2.RELEASE</version>
+                <scope>compile</scope>
             </dependency>
 
             <dependency>
@@ -98,7 +114,24 @@
                 <artifactId>pagehelper-spring-boot-starter</artifactId>
                 <version>${pagehelper.version}</version>
             </dependency>
+
+            <!--        工具类集合-->
+            <dependency>
+                <groupId>cn.hutool</groupId>
+                <artifactId>hutool-all</artifactId>
+                <version>${hutool-all.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>${fastjson.version}</version>
+            </dependency>
+
+
         </dependencies>
+
+
     </dependencyManagement>
 
     <dependencies>
