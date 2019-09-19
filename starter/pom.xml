@@ -7,6 +7,7 @@
         <artifactId>szcloud</artifactId>
         <version>${revision}</version>
     </parent>
+    <packaging>pom</packaging>
     <groupId>com.sztech.szcloud</groupId>
     <artifactId>starter</artifactId>
     <version>${revision}</version>

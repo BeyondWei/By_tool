@@ -15,7 +15,7 @@
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter</artifactId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
 
         <dependency>
@@ -27,6 +27,12 @@
         <dependency>
             <groupId>com.sztech.szcloud</groupId>
             <artifactId>common</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-web</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <!-- Spring Cloud Begin -->
@@ -47,6 +53,13 @@
             <artifactId>spring-cloud-starter-gateway</artifactId>
         </dependency>
         <!-- Spring Cloud End -->
+
+        <!-- Commons Begin -->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+        </dependency>
+        <!-- Commons Begin -->
     </dependencies>
 
     <build>
