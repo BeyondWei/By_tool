@@ -1,6 +1,5 @@
 package com.sztech.datashare;
 
-import com.sztech.szcloud.common.DemoInterface;
 import org.springframework.stereotype.Component;
 
 @Component

@@ -1,6 +1,5 @@
 package com.sztech.datashare;
 
-import com.sztech.szcloud.common.DemoInterface;
 import com.sztech.szcloud.common.dto.ResultsDto;
 import com.sztech.szcloud.common.util.RedisUtil;
 import org.springframework.beans.factory.annotation.Autowired;
