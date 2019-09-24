@@ -1,0 +1,8 @@
+### 不同文件类型上传的地址
+file.resource:
+  base: /home/bytool/file
+  excle-path: ${file.resource.base}/excle/
+  word-path: ${file.resource.base}/word/
+  pdf-path: ${file.resource.base}/pdf/
+  pic-path: ${file.resource.base}/pic/
+  pic-url: http://127.0.0.1:${server.port}${server.servlet.context-path}/img/

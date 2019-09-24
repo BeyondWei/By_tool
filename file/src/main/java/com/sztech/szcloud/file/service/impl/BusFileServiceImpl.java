@@ -81,18 +81,18 @@ public class BusFileServiceImpl implements BusFileService {
             fileDto.setUuid(uuid);
             StringBuilder lastName = new StringBuilder();
             lastName.append("/").append(uuid).append("_").append(simpleDateFormat.format(date)).append("_").append(fileName);
-            fileName = new File(filePath + simpleDateFormat.format(date) + "/").getAbsolutePath() + lastName.toString();
+            fileName = filePath + simpleDateFormat.format(date) + lastName.toString();
             if (!StringUtils.isEmpty(fileUrl)) {
                 fileDto.setFileUrl(fileUrl + simpleDateFormat.format(date) + lastName.toString());
             }
-            File dest = new File(fileName);
+            File dest = new File(fileName).getAbsoluteFile();
             //判断文件父目录是否存在
             if (!dest.getParentFile().exists()) {
                 dest.getParentFile().mkdirs();
             }
             try {
                 file.transferTo(dest);
-                fileDto.setFilePath(fileName);
+                fileDto.setFilePath(dest.getCanonicalPath());
                 log.info(fileName + "上传成功");
                 // todo 存入数据库
 //                FileInfo fileInfo = new FileInfo();
@@ -119,5 +119,7 @@ public class BusFileServiceImpl implements BusFileService {
 //        }
 //        this.download(response, fileInfo.getFilePath(), fileInfo.getFileName());
     }
+
+
 
 }

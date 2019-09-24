@@ -1,7 +1,7 @@
 server:
   port: 8083
   servlet:
-    context-path: /file
+    context-path: /pokemon
 spring:
   application:
     name: szcloud-upload-service
@@ -10,6 +10,8 @@ spring:
       max-file-size: 5MB
   profiles:
     active: dev
+    include:
+      - file
   cloud:
     nacos:
       discovery:
@@ -20,12 +22,3 @@ management:
     web:
       exposure:
         include: "*"
-
-
-### 不同文件类型上传的地址
-file.resource:
-  base: /home/bytool/file
-  excle-path: ${file.resource.base}/excle/
-  word-path: ${file.resource.base}/word/
-  pdf-path: ${file.resource.base}/pdf/
-  pic-path: ${file.resource.base}/pic/
