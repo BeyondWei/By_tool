@@ -1,6 +1,9 @@
 package com.sztech.szcloud.file.config.filter;
 
 import com.sztech.szcloud.common.properties.ResourceProperties;
+import lombok.Data;
+import lombok.extern.log4j.Log4j;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -11,6 +14,7 @@ import java.net.UnknownHostException;
 
 
 @Component
+@Slf4j
 public class MyFilter implements Filter {
 
     @Autowired
@@ -32,7 +36,7 @@ public class MyFilter implements Filter {
 
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-        System.out.println("MyFilter");
+        log.info("MyFilter");
         chain.doFilter(request,response);
     }
 

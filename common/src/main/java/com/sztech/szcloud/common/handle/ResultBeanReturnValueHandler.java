@@ -15,7 +15,7 @@ import org.springframework.web.method.support.ModelAndViewContainer;
 
 import javax.servlet.http.HttpServletResponse;
 
-
+@Component
 public class ResultBeanReturnValueHandler implements HandlerMethodReturnValueHandler {
 
     @Override

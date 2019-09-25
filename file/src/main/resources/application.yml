@@ -17,6 +17,7 @@ spring:
       discovery:
         server-addr: 192.168.5.60:8848
 
+
 management:
   endpoints:
     web:
