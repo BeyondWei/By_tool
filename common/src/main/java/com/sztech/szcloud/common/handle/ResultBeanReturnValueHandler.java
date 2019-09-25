@@ -1,6 +1,7 @@
 package com.sztech.szcloud.common.handle;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.sztech.szcloud.common.annotation.ResponseJson;
 import com.sztech.szcloud.common.dto.ResultsDto;
 import org.springframework.core.MethodParameter;
@@ -29,6 +30,6 @@ public class ResultBeanReturnValueHandler implements HandlerMethodReturnValueHan
         mavContainer.setRequestHandled(true);
         HttpServletResponse response = webRequest.getNativeResponse(HttpServletResponse.class);
         response.addHeader("Content-Type", MediaType.APPLICATION_JSON_UTF8_VALUE);
-        response.getWriter().append(JSON.toJSONString(ResultsDto.success(returnValue)));
+        response.getWriter().append(JSONObject.toJSON(ResultsDto.success(returnValue)).toString());
     }
 }

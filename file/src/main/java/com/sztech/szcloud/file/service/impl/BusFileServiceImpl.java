@@ -92,7 +92,7 @@ public class BusFileServiceImpl implements BusFileService {
             }
             try {
                 file.transferTo(dest);
-                fileDto.setFilePath(dest.getCanonicalPath());
+                fileDto.setFilePath(dest.getAbsolutePath().replace("\\","/"));
                 log.info(fileName + "上传成功");
                 // todo 存入数据库
 //                FileInfo fileInfo = new FileInfo();

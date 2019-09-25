@@ -1,10 +1,13 @@
 package com.sztech.szcloud.file.controller;
 
+import com.sztech.szcloud.common.annotation.ResponseJson;
 import com.sztech.szcloud.common.constants.SystemEnumConstant;
+import com.sztech.szcloud.common.dto.FileDto;
 import com.sztech.szcloud.common.dto.ResultsDto;
 import com.sztech.szcloud.common.properties.ResourceProperties;
 import com.sztech.szcloud.file.service.BusFileService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
@@ -12,6 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
 import java.io.UnsupportedEncodingException;
+import java.util.List;
 
 /**
  * 文件操作
@@ -34,14 +38,14 @@ public class FileController {
      * @Date 2019/8/21 17:45
      */
     @RequestMapping("uploadFile")
-    public ResultsDto uploadFile(MultipartFile[] files, String fileType) {
+    public List<FileDto> uploadFile(MultipartFile[] files, String fileType) {
         String path = "";
         String url = null;
         if (SystemEnumConstant.FILE_TYPE.PIC.getCode().equals(fileType)) {
             path = resourceProperties.getPicPath();
             url = resourceProperties.getPicUrl();
         }
-        return ResultsDto.success(fileService.upload(files, path, url));
+        return fileService.upload(files, path, url);
     }
 
     /**
