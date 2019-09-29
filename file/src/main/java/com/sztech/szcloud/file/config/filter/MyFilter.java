@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.extern.log4j.Log4j;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import javax.servlet.*;
@@ -15,6 +16,7 @@ import java.net.UnknownHostException;
 
 @Component
 @Slf4j
+@Order(2)
 public class MyFilter implements Filter {
 
     @Autowired
