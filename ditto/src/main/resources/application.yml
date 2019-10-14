@@ -1,0 +1,24 @@
+server:
+  port: 8888
+  servlet:
+    context-path: /ditto
+spring:
+  profiles:
+    active: dev
+  jackson:
+    time-zone: GMT+8
+    date-format: yyyy-MM-dd HH:mm:ss
+#############tk.Mybatis插件配置
+mapper:
+  mappers: com.sztech.mario.dao.plugin.TkMybatisMapper
+  not-empty: false
+  identity: MYSQL
+
+#pagehelper分页插件
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql
+  offset-as-page-num: true
+  row-bounds-with-count: true

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <properties resource="application-dev.yml"/>
+
+    <context id="Mysql" targetRuntime="MyBatis3Simple" defaultModelType="flat">
+        <!-- tk.mybatis配置 -->
+        <property name="javaFileEncoding" value="UTF-8"/>
+        <property name="beginningDelimiter" value="`"/>
+        <property name="endingDelimiter" value="`"/>
+        <plugin type="tk.mybatis.mapper.generator.MapperPlugin">
+            <property name="mappers" value="com.sztech.mario.dao.plugin.TkMybatisMapper"/>
+        </plugin>
+
+        <!-- 数据库链接 -->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://192.168.40.14:3306/wx_matter_poly?useSSL=false"
+                        userId="root"
+                        password="123456">
+            <property name="nullCatalogMeansCurrent" value="true" />
+        </jdbcConnection>
+        <!-- 生成实体类的包名和位置 -->
+        <javaModelGenerator targetPackage="com.sztech.mario.common.entity" targetProject="../common/src/main/java"/>
+        <!-- 生成的映射文件包名和位置 -->
+        <sqlMapGenerator targetPackage="mapper" targetProject="../dao/src/main/resources"/>
+        <!-- 生成DAO的包名和位置 -->
+        <javaClientGenerator targetPackage="com.sztech.mario.dao.mapper" targetProject="../dao/src/main/java" type="XMLMAPPER"/>
+
+        <!-- 要生成的那些表 -->
+<!--        <table tableName="%" >-->
+<!--            <generatedKey column="id" sqlStatement="MySql" identity="true"/>-->
+<!--        </table>-->
+        <table tableName="matter_info" >
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+        </table>
+    </context>
+</generatorConfiguration>

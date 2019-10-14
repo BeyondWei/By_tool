@@ -3,8 +3,10 @@ package com.sztech.szcloud.common.util;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
-import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Component;
+
+import java.lang.annotation.Annotation;
+import java.util.Map;
 
 /**
  * @ClassName SpringUtil
@@ -17,8 +19,6 @@ public class SpringUtil implements ApplicationContextAware {
 
     private static ApplicationContext applicationContext;
 
-    private static Environment environment;
-
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
         if (null == SpringUtil.applicationContext) {
@@ -26,26 +26,12 @@ public class SpringUtil implements ApplicationContextAware {
         }
     }
 
-    public static void setEnvironment(Environment environment){
-        SpringUtil.environment = environment;
-    }
-
-
-
     /**
      * 获得applicationContext
      * @return
      */
     public static ApplicationContext getApplicationContext(){
         return applicationContext;
-    }
-
-    /**
-     * 获得environment
-     * @return
-     */
-    public static Environment getEnvironment(){
-        return environment;
     }
 
     /**
@@ -71,8 +57,19 @@ public class SpringUtil implements ApplicationContextAware {
         return getApplicationContext().getBean(name);
     }
 
-    /// 获取当前环境
+    /**
+     * 获取当前环境
+     */
     public static String getActiveProfile() {
-        return environment.getActiveProfiles()[0];
+        return applicationContext.getEnvironment().getActiveProfiles()[0];
+    }
+
+    /**
+     * 获取有关注解的bean
+     * @param clazz
+     * @return
+     */
+    public static Map<String, Object> getBeansWithAnnotation(Class<? extends Annotation> clazz){
+        return getApplicationContext().getBeansWithAnnotation(clazz);
     }
 }
