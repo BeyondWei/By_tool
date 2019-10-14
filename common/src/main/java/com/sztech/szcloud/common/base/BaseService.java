@@ -41,4 +41,43 @@ public interface BaseService<T> {
     int selectCountByExample(Object example);
 
     List<T> selectAll();
+
+    /**
+     * 根据主键更新属性不为null的值
+     *
+     * @param t
+     * @return
+     */
+    Integer updateByPrimaryKeySelective(T t);
+
+    /**
+     * 根据主键更新全部属性
+     *
+     * @param t
+     * @return
+     */
+    Integer updateByPrimaryKey(T t);
+
+    /**
+     * 根据主键更新属性不为null的值
+     *
+     * @param list
+     * @return
+     */
+    Integer batchUpdateByPrimaryKey(List<T> list);
+
+
+    List<T> select(T t);
+
+    T selectOne(T t);
+
+    /**
+     * 剔除字段为空的信息进行搜索
+     * @param t
+     * @return
+     */
+    List<T> selectNotEmpty(T t);
+
+    int delete(T t);
+
 }

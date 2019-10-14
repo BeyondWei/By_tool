@@ -2,6 +2,7 @@ package com.sztech.szcloud.common.base;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.sztech.szcloud.common.util.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import tk.mybatis.mapper.entity.Condition;
@@ -68,8 +69,47 @@ public abstract class BaseServiceImpl<T> implements BaseService<T> {
     }
 
     @Override
-    public int updateByExampleSelective(T entity,Example example) {
-        return mapper.updateByExampleSelective(entity,example);
+    public int updateByExampleSelective(T entity, Example example) {
+        return mapper.updateByExampleSelective(entity, example);
+    }
+
+    /**
+     * 根据主键更新属性不为null的值
+     *
+     * @param t
+     * @return
+     */
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public Integer updateByPrimaryKeySelective(T t) {
+        return mapper.updateByPrimaryKeySelective(t);
+    }
+
+    /**
+     * 根据主键更新全部属性
+     *
+     * @param t
+     * @return
+     */
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public Integer updateByPrimaryKey(T t) {
+        return mapper.updateByPrimaryKey(t);
+    }
+
+    /**
+     * 根据主键更新属性不为null的值
+     *
+     * @param list
+     * @return
+     */
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public Integer batchUpdateByPrimaryKey(List<T> list) {
+        list.forEach(e -> {
+            mapper.updateByPrimaryKeySelective(e);
+        });
+        return list.size();
     }
 
     @Override
@@ -110,12 +150,36 @@ public abstract class BaseServiceImpl<T> implements BaseService<T> {
     @Override
     @Transactional(rollbackFor = Exception.class)
     public Integer batchAdd(List<T> list) {
-        return mapper.insertList(list);
+        if (list.size() > 0) {
+            mapper.insertList(list);
+        }
+        return 0;
     }
 
     @Override
-    public List<T> selectAll(){
+    public List<T> selectAll() {
         return mapper.selectAll();
+    }
+
+    @Override
+    public List<T> select(T t) {
+        return mapper.select(t);
+    }
+
+    @Override
+    public T selectOne(T t) {
+        return mapper.selectOne(t);
+    }
+
+    @Override
+    public List<T> selectNotEmpty(T t) {
+        t = (T) StringUtil.paramToNull(t);
+        return mapper.select(t);
+    }
+
+    @Override
+    public int delete(T t) {
+        return mapper.delete(t);
     }
 
 }

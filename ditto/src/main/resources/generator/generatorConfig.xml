@@ -12,29 +12,29 @@
         <property name="beginningDelimiter" value="`"/>
         <property name="endingDelimiter" value="`"/>
         <plugin type="tk.mybatis.mapper.generator.MapperPlugin">
-            <property name="mappers" value="com.sztech.mario.dao.plugin.TkMybatisMapper"/>
+            <property name="mappers" value="com.sztech.szcloud.common.base.TkMybatisMapper"/>
         </plugin>
 
         <!-- 数据库链接 -->
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-                        connectionURL="jdbc:mysql://192.168.40.14:3306/wx_matter_poly?useSSL=false"
+                        connectionURL="jdbc:mysql://192.168.5.120:3306/ditto?useSSL=false"
                         userId="root"
                         password="123456">
             <property name="nullCatalogMeansCurrent" value="true" />
         </jdbcConnection>
         <!-- 生成实体类的包名和位置 -->
-        <javaModelGenerator targetPackage="com.sztech.mario.common.entity" targetProject="../common/src/main/java"/>
+        <javaModelGenerator targetPackage="com.youfan.ditto.pojo.entity" targetProject="src/main/java"/>
         <!-- 生成的映射文件包名和位置 -->
-        <sqlMapGenerator targetPackage="mapper" targetProject="../dao/src/main/resources"/>
+        <sqlMapGenerator targetPackage="mapper" targetProject="src/main/resources"/>
         <!-- 生成DAO的包名和位置 -->
-        <javaClientGenerator targetPackage="com.sztech.mario.dao.mapper" targetProject="../dao/src/main/java" type="XMLMAPPER"/>
+        <javaClientGenerator targetPackage="com.youfan.ditto.dao.mapper" targetProject="src/main/java" type="XMLMAPPER"/>
 
         <!-- 要生成的那些表 -->
-<!--        <table tableName="%" >-->
-<!--            <generatedKey column="id" sqlStatement="MySql" identity="true"/>-->
-<!--        </table>-->
-        <table tableName="matter_info" >
+        <table tableName="%" >
             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
         </table>
+<!--        <table tableName="matter_info" >-->
+<!--            <generatedKey column="id" sqlStatement="MySql" identity="true"/>-->
+<!--        </table>-->
     </context>
 </generatorConfiguration>

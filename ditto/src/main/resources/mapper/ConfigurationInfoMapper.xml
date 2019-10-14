@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.youfan.ditto.dao.mapper.ConfigurationInfoMapper">
+  <resultMap id="BaseResultMap" type="com.youfan.ditto.pojo.entity.ConfigurationInfo">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="configuration_uuid" jdbcType="CHAR" property="configurationUuid" />
+    <result column="configuration_name" jdbcType="VARCHAR" property="configurationName" />
+    <result column="instructions" jdbcType="VARCHAR" property="instructions" />
+    <result column="user_uuid" jdbcType="CHAR" property="userUuid" />
+    <result column="configuration_type" jdbcType="VARCHAR" property="configurationType" />
+    <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate" />
+    <result column="gmt_modified" jdbcType="TIMESTAMP" property="gmtModified" />
+    <result column="is_delete" jdbcType="TINYINT" property="isDelete" />
+  </resultMap>
+</mapper>

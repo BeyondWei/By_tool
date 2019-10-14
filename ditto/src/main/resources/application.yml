@@ -1,5 +1,4 @@
 server:
-  port: 8888
   servlet:
     context-path: /ditto
 spring:
@@ -10,7 +9,7 @@ spring:
     date-format: yyyy-MM-dd HH:mm:ss
 #############tk.Mybatis插件配置
 mapper:
-  mappers: com.sztech.mario.dao.plugin.TkMybatisMapper
+  mappers: com.sztech.szcloud.common.base.TkMybatisMapper
   not-empty: false
   identity: MYSQL
 
